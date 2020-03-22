@@ -11,8 +11,10 @@ goal_setup() {
   pushd "${SCRIPT_DIR}" > /dev/null
     config_file="${PROJECT_ROOT}/okta-config.txt"
     rm -f $config_file && touch $config_file
-    echo "Adding okta-config.txt to your .gitignore"
-    echo "okta-config.txt" >> ../.gitignore
+    if [ -z "$(cat ../.gitignore | grep okta-config.txt)" ]; then
+      echo "Adding okta-config.txt to your .gitignore"
+      echo "okta-config.txt" >> ../.gitignore
+    fi
 
     read -p "What is your username (e.g. meow@catnip.com)? " username_response
     if [ -z "${username_response}" ]; then
