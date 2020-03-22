@@ -83,6 +83,7 @@ goal_run() {
     echo "Mounting ${mounted_dir}"
 
     docker run -it \
+      --name okta-aws-portal \
       --env-file "${mounted_dir}/okta-config.txt" \
       -v "${mounted_dir}:/app" \
       okta-aws-portal ./get-token.sh

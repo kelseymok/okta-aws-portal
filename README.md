@@ -51,3 +51,9 @@ You will be immediately dropped into a bash environment. Run `get-token` to retr
 #### Testing
 * `aws s3 ls` should return a list of AWS S3 buckets
 * `terraform` should return a list of possible commands
+
+#### Running AWS commands against Docker container
+You can use the Docker container's current AWS session to run AWS CLI commands directly from your host:
+```bash
+docker exec -it okta-aws-portal aws s3 ls
+```
