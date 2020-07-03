@@ -3,7 +3,10 @@ WORKDIR /
 
 RUN apk add --no-cache \
   bash \
-  curl
+  curl \
+  git \
+  jq \
+  openssh
 
 ## Install Pip Packages
 RUN pip install --upgrade pip awscli aws_role_credentials oktaauth

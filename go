@@ -42,7 +42,7 @@ goal_setup() {
       echo "Application Type not provided"
       exit 1
     fi
-    process_read "OKTA_APP_TYPE" "${okta_app_type}" $config_file
+    process_read "OKTA_APPTYPE" "${okta_app_type}" $config_file
   popd > /dev/null
 
 }
