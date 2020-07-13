@@ -19,6 +19,12 @@ RUN curl -L -o ./terraform.zip \
     unzip -d /usr/local/bin ./terraform.zip && \
     rm terraform.zip
 
+## Install Kubectl
+RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl && \
+  chmod +x ./kubectl && \
+  mv ./kubectl /bin/kubectl
+
+RUN touch ~/.aws/credentials
 
 COPY ./get-token.sh /bin/get-token
 
