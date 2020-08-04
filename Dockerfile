@@ -1,12 +1,15 @@
 FROM python:2-alpine
 WORKDIR /
 
+
+
 RUN apk add --no-cache \
   bash \
   curl \
   git \
   jq \
-  openssh
+  openssh \
+  make
 
 ## Install Pip Packages
 RUN pip install --upgrade pip awscli aws_role_credentials oktaauth
@@ -23,8 +26,9 @@ RUN curl -L -o ./terraform.zip \
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl && \
   chmod +x ./kubectl && \
   mv ./kubectl /bin/kubectl
-  
+
 RUN mkdir ~/.aws && touch ~/.aws/credentials
+
 
 COPY ./get-token.sh /bin/get-token
 
